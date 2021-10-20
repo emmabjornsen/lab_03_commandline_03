@@ -37,7 +37,8 @@ $ ls
 Copy and paste the output below.
 ----------
 
-
+$ ls
+foo.txt
 
 ==========
 7. Create another new file using touch.
@@ -45,7 +46,7 @@ Copy and paste the output below.
 $ touch bar.txt
 ----------
 
-
+$ touch bar.txt
 
 ==========
 8. List the files in this directory using the flag that gives the most details.
@@ -53,7 +54,10 @@ $ touch bar.txt
 Copy and paste the output below.
 ----------
 
-
+$ ls -l
+total 0
+-rw-r--r-- 1 emmab 197614 0 Oct 20 16:16 bar.txt
+-rw-r--r-- 1 emmab 197614 0 Oct 20 16:15 foo.txt
 
 ==========
 9. Create a copy of bar.txt called baz.txt and then list the files again.
@@ -62,13 +66,22 @@ Copy and paste the output below.
 Write the command that you used to copy the file.  Additionally, copy and paste the output of your file listing below.
 ----------
 
-
+$ ls -l
+total 0
+-rw-r--r-- 1 emmab 197614 0 Oct 20 16:16 bar.txt
+-rw-r--r-- 1 emmab 197614 0 Oct 20 16:17 baz.txt
+-rw-r--r-- 1 emmab 197614 0 Oct 20 16:15 foo.txt
 
 ==========
 10. Delete the file called bar.txt and then list the files again.
 
 Write the command that you used to remove the file.  Copy and paste the output of your file listing below.
 ----------
+
+$ rm bar.txt
+$ ls 
+baz.txt  foo.txt
+
 ==========
 11. Move the file called foo.txt to qux.txt and then list the files again.
 
@@ -76,7 +89,9 @@ Write the command that you used to remove the file.  Copy and paste the output o
 Write the command that you used to move the file.  Copy and paste the output of your file listing below.
 ----------
 
-
+$ mv foo.txt qux.txt
+$ ls
+baz.txt  qux.txt
 
 ==========
 12. Go up one directory so that you're in ~/mtec-1003-lab-03
@@ -91,7 +106,8 @@ Write the command that you used to move the file.  Copy and paste the output of 
 Write out the command that you used and what happened.
 ----------
 
-
+$ rmdir my_files
+rmdir: failed to remove 'my_files': Directory not empty
 
 ==========
 14. Try removing the directory called my_files using rm.
@@ -99,7 +115,8 @@ Write out the command that you used and what happened.
 Write out the command that you used and what happened.
 ----------
 
-
+$ rm my_files
+rm: cannot remove 'my_files': Is a directory
 
 ==========
 15. MAKE SURE YOU'RE IN THE mtec1002-lab-03 directory!  
@@ -109,7 +126,9 @@ Force the removal of the directory and files using the -rf flag
 $ rm -rf my_files
 ----------
 
-
+$ rm -rf my_files
+$ ls
+books/  lab03logs.tar.gz  logs/  web/
 
 ==========
 16. There's a txt file version of a book located in the mtec1002-lab-03 folder.  It is in the following directory if you're in the lab folder:
@@ -121,7 +140,7 @@ Use the command called cat on the file to show its contents.
 Describe what happened below.
 ----------
 
-
+The cat command wrote out all of the paragraphs of the text file
 
 ==========
 17. That was a lot of text.  Let's find ways to limit it.  Using the same file...
@@ -133,7 +152,8 @@ Use the command, head, on the file to show the contents of the beginning of the 
 Write the command that you used below.  Write the last line of the output below (it should be the title).
 ----------
 
-
+$ head books/other/pg1232.txt
+Title: The Prince
 
 ==========
 18. Using the same file again!
@@ -145,7 +165,11 @@ Use tail on the file to show the contents of the end of the file.
 Write the command that you used below.  Write the last line of the output below (it should be the title).
 ----------
 
-
+$ tail books/other/pg1232.txt
+This Web site includes information about Project Gutenberg-tm,
+including how to make donations to the Project Gutenberg Literary
+Archive Foundation, how to help produce our new eBooks, and how to
+subscribe to our email newsletter to hear about new eBooks.
 
 ==========
 19. Using the same file...
@@ -157,7 +181,11 @@ Use less and more on the file to show the contents of the file.  Try pressing sp
 Write the command that you used below.  Describe what spacebar and q does after using either less or more.
 ----------
 
+$ less books/other/pg1232.txt
+Spacebar allowed me to move down a whole page at a time. q allwoed me to quit the scrolling mechanisms completely. 
 
+When I tried to use the "more" command on its own, I was getting the error "$ more books/other/pg1232.txt
+bash: more: command not found." When I used "more" while the "less" command was active, I was able to scroll up line by line.
 
 ==========
 20. Describe what situations you would use the following commands for viewing files: less, more, cat, tail, head
@@ -165,14 +193,22 @@ Write the command that you used below.  Describe what spacebar and q does after 
 (Some characteristics that may help your description might be the length of the file, whether or not you'd like to read the whole thing... or just the beginning or end, etc.)
 ----------
 
-
+less & more - when I'd like to view a large document but skim and read through rather quickly
+cat - when I need to read a shorter document in its entirety
+tail - when I need to see the information about a file (ie its source)
+head- when I only need to see the beginning and the title of a file
 
 ==========
 21.  How many words are in pg1232.txt?  What command did you use to determine the word count?
 ----------
+52639
 
-
+$ wc -w books/other/pg1232.txt
+52639 books/other/pg1232.txt
 
 ==========
 22.  How many lines are in pg1232.txt?  What command did you use to determine the line count?
 ----------
+5063
+$ wc -l books/other/pg1232.txt
+5063 books/other/pg1232.txt
