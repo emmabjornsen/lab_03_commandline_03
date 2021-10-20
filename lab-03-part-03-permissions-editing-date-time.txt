@@ -18,7 +18,8 @@ We're going to be writing a shell script.  First, though... let's figure out wha
 What command did you use, and what was its output?
 ----------
 
-
+$ date
+Wed, Oct 20, 2021  4:57:22 PM
 
 ==========
 2. Print out a calendar for this month.
@@ -26,7 +27,8 @@ What command did you use, and what was its output?
 What command did you use, and what was its output?
 ----------
 
-
+$ cal
+bash: cal: command not found
 
 ==========
 3. Go to your home directory.  Verify that you're in your home directory.
@@ -34,7 +36,9 @@ What command did you use, and what was its output?
 What commands did you use to do this?
 ----------
 
-
+$ cd ~
+$ pwd
+/c/Users/emmab
 
 ==========
 4. Create an empty file called copy_to_backup.sh.  Verify that the file exists.
@@ -42,7 +46,9 @@ What commands did you use to do this?
 What commands did you use to do this?
 ----------
 
-
+$ touch copy_to_backup.sh
+$ ls c*
+copy_to_backup.sh
 
 ==========
 5. What are the permissions on your copy_to_backup.sh.
@@ -50,7 +56,7 @@ What commands did you use to do this?
 What command did you use to find the permissions?
 ----------
 
-
+-rw-r--r-- // user: read write; group: read; world: read
 
 ==========
 6. Change the permissions so that this file is executable by the user.  Verify the new permissions.
@@ -58,7 +64,10 @@ What command did you use to find the permissions?
 What commands did you use to do this?  What was the output?
 ----------
 
-
+I tried 
+$ chmod u+x copy_to_backup.sh
+multiple times, but when I tried to verify the permissions, I was still getting:
+-rw-r--r-- 1 emmab 197614 0 Oct 20 17:01 copy_to_backup.sh
 
 ==========
 7. Try executing the file!
@@ -68,7 +77,9 @@ $ ./copy_to_backup.sh
 What command did you use to try to execute the file?  What happens?
 ----------
 
+$ ./copy_to_backup.sh
 
+There was no output.
 
 ==========
 8. Open the file with nano
@@ -76,7 +87,7 @@ What command did you use to try to execute the file?  What happens?
 What command did you use to do this?
 ----------
 
-
+nano copy_to_backup.sh
 
 ==========
 9. In your file, write the following commands:
@@ -88,7 +99,10 @@ c. print out "I'm done backing up"
 Write out the code in your file below...
 ----------
 
-
+ #!/bin/bash
+./mkdir -p backup
+./cp -r copy_to_backup.sh backup*.txt
+./echo "im done backing up".sh"
 
 ==========
 10. Create a directory in your home called test
@@ -99,7 +113,9 @@ Write out the code in your file below...
 What commands did you use to do this?
 ----------
 
-
+$ cd test
+$ touch 1.txt
+$ touch 2.txt
 
 ==========
 12. Move the script that you created into this directory.
@@ -107,7 +123,8 @@ What commands did you use to do this?
 What commands did you use to do this?
 ----------
 
-
+$  cd ~
+$ mv copy_to_backup.sh test
 
 ==========
 13. Run your script.
@@ -115,7 +132,14 @@ What commands did you use to do this?
 What commands did you use to do this?
 ----------
 
-
+$ cd test
+$ ls
+1.txt  2.txt  copy_to_backup.sh*
+$ ./copy_to_backup.sh
+./copy_to_backup.sh: line 2: ./mkdir: No such file or directory
+./copy_to_backup.sh: line 3: ./cp: No such file or directory
+./copy_to_backup.sh: line 4: unexpected EOF while looking for matching `"'
+./copy_to_backup.sh: line 5: syntax error: unexpected end of file
 
 ==========
 14. Verify that a backup folder was created in your home directory... with copies of the files present.
